@@ -29,6 +29,12 @@ disk() {
     done
 }
 
+tcp_status() {
+    tcp=$(netstat -antp | awk '{a[$6]++}END{for (i in a)printf i":"a[i]" "}')
+    echo "TCP连接状态 - $tcp"
+}
+
 cpu
 memory
 disk
+tcp_status
